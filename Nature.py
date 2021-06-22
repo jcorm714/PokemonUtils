@@ -4,7 +4,7 @@ the positive and negative modifiers to a pokemon's stats"""
 from enum import Enum
 import typing
 
-from Pokemon import Stats
+from Stats import Stats
 
 
 class Nature(Enum):
