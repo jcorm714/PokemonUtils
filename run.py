@@ -15,5 +15,16 @@ def main():
         formatter = Showdown_Formatter(poke)
         print(formatter.format())
 
+        poke2 = Pokemon()
+        poke2.name = "Blissey"
+        poke2.nature = Nature.SASSY
+        poke2.level = 95
+        poke2.set_base_stats(atk=10,def_=10, spa=75, spd=135,spe=55,hp=255)
+        poke2.set_evs(atk=64,def_=0,spa=56,spd=108,spe=28, hp=252)
+        poke2.set_stat_totals(atk=49,def_=36,spa=178,spd=341,spe=117,hp=676)
+        poke2.calc_ivs_gen3()
+        formatter = Showdown_Formatter(poke2)
+        print(formatter.format())
+
 if __name__ == "__main__":
         main()
