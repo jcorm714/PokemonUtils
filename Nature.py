@@ -35,9 +35,9 @@ class Nature(Enum):
         CAREFUL = "Careful"
         QUIRKY = "Quirky"
 
-NatureModifiers = dict[str]
 
-def get_affected_stats(nature: Nature) -> NatureModifiers:
+
+def get_affected_stats(nature: Nature):
         """Returns the positive and negative stat affected by a nature
         Parameters
         ----------
