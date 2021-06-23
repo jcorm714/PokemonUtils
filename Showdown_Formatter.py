@@ -21,21 +21,19 @@ class Showdown_Formatter:
                 formatString += f"Level: {self.pokemon.level} \n" 
                 
                 #evs
-                formatString += "EVs: "
+                formatString += "EVs:"
                 for key in self.pokemon.evs.keys():
                         if(self.pokemon.evs[key] > 0):
-                                formatString += f"{self.pokemon.evs[key]} {Showdown_Formatter.StatNameMap[key]} /"
+                                formatString += f" {self.pokemon.evs[key]} {Showdown_Formatter.StatNameMap[key]} /"
                 
                 #remove last '/' character
                 formatString = formatString[0:len(formatString) -1]
                 formatString += '\n'
-
-                formatString += f"{self.pokemon.nature.name} Nature \n"
-                
-                formatString += "IVs: "
+                formatString += f"{self.pokemon.nature.value} Nature \n"
+                formatString += "IVs:"
                 for key in self.pokemon.ivs.keys():
                         if(self.pokemon.ivs[key] > 0):
-                                formatString += f"{self.pokemon.ivs[key]} {Showdown_Formatter.StatNameMap[key]} /"
+                                formatString += f" {self.pokemon.ivs[key]} {Showdown_Formatter.StatNameMap[key]} /"
                 
                 formatString = formatString[0:len(formatString) -1]
                 formatString += '\n'

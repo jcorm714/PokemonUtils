@@ -162,26 +162,22 @@ class Pokemon:
                 # hp_total =  [(2 * Base + IV + [EV/4])/100] + Level + 10
                 # Rearranging the formula
                 # -----------------------
-                #  hp_total =  [(2 * Base + IV + [EV/4])/100] + Level + 10
-                #  hp_total - (Level + 10) =  [(2 * Base + IV + [EV/4])/100] 
-                #  [hp_total - (Level + 10)] * 100 =  (2 * Base + IV + [EV/4])
-                #  ([hp_total - (Level + 10)] * 100) - (2*base + [EV/4]) = IV
-    
-                self.ivs[Stats.HP] = (self.stat_totals[Stats.HP] - (self.level + 10)) * 100 \
-                - (2 * self.base_stats[Stats.HP] + (self.evs[Stats.HP]//4))
+                #   IV = [(Total - level - 10) * 100]/level - 2 * Base - (EV/4)
 
+                hp_iv = (self.stat_totals[Stats.HP] - self.level - 10) * 100
+                hp_iv = round(hp_iv/self.level)
+                hp_iv = hp_iv - 2 * self.base_stats[Stats.HP] 
+                hp_iv = hp_iv - round(self.evs[Stats.HP]/4)
+                hp_iv = round(hp_iv)
+
+                self.ivs[Stats.HP] = hp_iv
                 # the formula for the other stats is
                 # stat_total = [([(2 * Base + IV + [EV/4]) * level]/100) + 5] * Nature
                 # the nature is a 10% modifier to two different stats
                 # on of the stats is hindered while the other is helped
                 # Rearranging the formula
                 # -----------------------
-                # stat_total = [([(2 * Base + IV + [EV/4]) * level]/100) + 5] * Nature
-                # (stat_total/Nature) = ([(2 * Base + IV + [EV/4]) * level]/100) + 5
-                # [(stat_total/Nature) - 5] = ([(2 * Base + IV + [EV/4]) * level]/100)
-                # ([(stat_total/Nature) - 5] * 100) = [(2 * Base + IV + [EV/4]) * level]
-                # [([(stat_total/Nature) - 5] * 100)/level] = (2 * Base + IV + [EV/4])
-                # [([(stat_total/Nature) - 5] * 100)/level] - (2*Base +EV/4) =  IV 
+                # IV = ((Stat/Nature - 5) * 100) / Level - 2*Base - EV/4
                 self.ivs[Stats.ATTACK] = self.__calc_stat_iv(Stats.ATTACK)
                 self.ivs[Stats.DEFENSE] = self.__calc_stat_iv(Stats.DEFENSE)
                 self.ivs[Stats.SP_ATTACK] = self.__calc_stat_iv(Stats.SP_ATTACK)
@@ -199,13 +195,18 @@ class Pokemon:
                                 the stat to calculate for
                 """
                 modifier = 1
-                modifiers = get_affected_stats(stat)
+                modifiers = get_affected_stats(self.nature)
                 if modifiers["POS"] == stat:
                         modifier = 1.1
                 elif modifiers["NEG"] == stat:
-                        modifiers = 0.9
-        
-                return (((self.stat_totals[stat]/modifier) - 5) * 100)/self.level \
-                - (2 * self.base_stats[stat] + self.evs[stat]//4)
+                        modifier = 0.9
+
+                stat_iv = round(self.stat_totals[stat]/modifier) -5
+                stat_iv = stat_iv * 100
+                stat_iv = round(stat_iv/self.level)
+                stat_iv = stat_iv - 2 * self.base_stats[stat]
+                stat_iv = stat_iv - round(self.evs[stat])/4
+                return int(stat_iv)
+
 
 
