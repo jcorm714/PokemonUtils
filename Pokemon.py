@@ -185,8 +185,6 @@ class Pokemon:
                 self.ivs[Stats.SPEED] = self.__calc_stat_iv(Stats.SPEED)
                 
 
-
-
         def __calc_stat_iv(self, stat:Stats) -> int:
                 """Calcs the stats for others stats besides HP,
                 Parameters
@@ -201,11 +199,16 @@ class Pokemon:
                 elif modifiers["NEG"] == stat:
                         modifier = 0.9
 
-                stat_iv = round(self.stat_totals[stat]/modifier) -5
+                stat_iv = round(self.stat_totals[stat]/modifier) -5 
                 stat_iv = stat_iv * 100
                 stat_iv = round(stat_iv/self.level)
                 stat_iv = stat_iv - 2 * self.base_stats[stat]
                 stat_iv = stat_iv - round(self.evs[stat])/4
+
+                # for some reason it always comes out one less when there is a nature modifier
+                # so I'm adding it back here lol
+                if modifier != 1:
+                        stat_iv += 1
                 return int(stat_iv)
 
 
