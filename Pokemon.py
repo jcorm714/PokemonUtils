@@ -70,36 +70,11 @@ class Pokemon:
                                 the base special defense of a pokemon
                         spe: int 
                                 the base speed of a pokemon"""
-                self.base_stats[Stats.ATTACK] = atk;
-                self.base_stats[Stats.DEFENSE] = def_;
-                self.base_stats[Stats.SP_ATTACK] = spa;
-                self.base_stats[Stats.SP_DEFENSE] = spd;
-                self.base_stats[Stats.SPEED] = spe;
-
-
-        def set_base_stats(self, atk:int, def_:int, spa:int, spd:int, spe:int, hp:int):
-                """Set the base stats of a pokemon
-                Parameters
-                ----------
-                        atk: int
-                                the base attack of a pokemon
-                        def: int
-                                the base defense of a pokemon
-                        spa: int
-                                the base special attack of a pokemon
-                        spd: int
-                                the base special defense of a pokemon
-                        spe: int 
-                                the base speed of a pokemon
-                        hp: int 
-                                the base hp for a pokemon"""
-
                 self.base_stats[Stats.ATTACK] = atk
                 self.base_stats[Stats.DEFENSE] = def_
                 self.base_stats[Stats.SP_ATTACK] = spa
                 self.base_stats[Stats.SP_DEFENSE] = spd
                 self.base_stats[Stats.SPEED] = spe
-                self.base_stats[Stats.HP] = hp
 
 
         def set_evs(self, atk:int, def_:int, spa:int, spd:int, spe:int, hp:int):
