@@ -48,7 +48,7 @@ class BulbapediaScraper:
                         if(len(divs) == 2):
                                 break
                         stat_name, value, _ = divs
-                        value = value.string
+                        value = int(value.string)
                         stat = stat_name.find("span")
                         if(stat.string == "HP"):
                                 stats[Stats.HP] = value
@@ -70,7 +70,7 @@ class BulbapediaScraper:
                 with keys of Stats.py
                 Parameters
                 ----------
-                        pokemon_page str html of the webpage"""
+                        pokemon_page html of the webpage"""
                 if(pokemon_page is None):
                         logging.warning("Invalide page data for pokemon")
                         return

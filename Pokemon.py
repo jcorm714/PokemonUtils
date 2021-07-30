@@ -58,7 +58,7 @@ class Pokemon:
             }
 
 
-        def set_base_stats(self, atk:int, def_:int, spa:int, spd:int, spe:int):
+        def set_base_stats(self, atk:int, def_:int, spa:int, spd:int, spe:int, hp:int):
                 """Set the base stats of a pokemon
                         atk: int
                                 the base attack of a pokemon
@@ -75,6 +75,7 @@ class Pokemon:
                 self.base_stats[Stats.SP_ATTACK] = spa
                 self.base_stats[Stats.SP_DEFENSE] = spd
                 self.base_stats[Stats.SPEED] = spe
+                self.base_stats[Stats.HP] = hp
 
 
         def set_evs(self, atk:int, def_:int, spa:int, spd:int, spe:int, hp:int):
