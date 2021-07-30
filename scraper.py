@@ -86,6 +86,7 @@ class BulbapediaScraper:
                         stats = self.__parse_base_stats_table(tbl)
                         gen = table_title.string
                         gen = gen.replace("Generation", "");
+                        gen = gen.replace("s","")
                         gen = gen.strip()
                         if("onward" in gen):
                                 gen = gen.replace("onward", "")
