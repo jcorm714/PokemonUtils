@@ -4,7 +4,7 @@ on bulbapedia"""
 import requests
 import logging
 import json
-from Stats import Stats
+from Objects.Stats import Stats
 from bs4 import BeautifulSoup
 
 logging.basicConfig(format="[%(asctime)s %(levelname)s]: %(message)s", level=logging.DEBUG)

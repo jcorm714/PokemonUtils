@@ -1,8 +1,8 @@
 """This Class represents a Pokemon and its data"""
 
-from Nature import Nature
-from Nature import get_affected_stats
-from Stats import Stats
+from Objects.Nature import Nature
+from Objects.Nature import get_affected_stats
+from Objects.Stats import Stats
 class Pokemon:
         """A Class that represents all of the data pertaining to a pokemon
         Properties

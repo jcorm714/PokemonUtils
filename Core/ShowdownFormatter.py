@@ -1,8 +1,8 @@
-from Pokemon import Pokemon
-from Stats import Stats
+from Objects.Pokemon import Pokemon
+from Objects.Stats import Stats
 import typing
 
-class Showdown_Formatter:
+class ShowdownFormatter:
         StatNameMap = {
                 Stats.HP: "HP",
                 Stats.ATTACK: "Atk",
@@ -24,7 +24,7 @@ class Showdown_Formatter:
                 formatString += "EVs:"
                 for key in self.pokemon.evs.keys():
                         if(self.pokemon.evs[key] > 0):
-                                formatString += f" {self.pokemon.evs[key]} {Showdown_Formatter.StatNameMap[key]} /"
+                                formatString += f" {self.pokemon.evs[key]} {ShowdownFormatter.StatNameMap[key]} /"
                 
                 #remove last '/' character
                 formatString = formatString[0:len(formatString) -1]
@@ -33,7 +33,7 @@ class Showdown_Formatter:
                 formatString += "IVs:"
                 for key in self.pokemon.ivs.keys():
                         if(self.pokemon.ivs[key] > 0):
-                                formatString += f" {self.pokemon.ivs[key]} {Showdown_Formatter.StatNameMap[key]} /"
+                                formatString += f" {self.pokemon.ivs[key]} {ShowdownFormatter.StatNameMap[key]} /"
                 
                 formatString = formatString[0:len(formatString) -1]
                 formatString += '\n'
